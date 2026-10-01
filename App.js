@@ -65,10 +65,10 @@ function CartaoVisita() {
 
       <ScrollView contentContainerStyle={styles.conteudo}>
         <Image
-          source={{ uri: 'https://github.com/adrinano-2004.png' }}
+          source={require('./assets/avatar.png')}
           style={styles.foto}
         />
-        <Text style={styles.nome}>Adriano</Text>
+        <Text style={styles.nome}>Adriano de Castro Campos</Text>
 
         {/* bio */}
         <View style={styles.card}>
