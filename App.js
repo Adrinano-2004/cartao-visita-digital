@@ -20,7 +20,7 @@ const mensagens = [
   'Dica: faça uma pausa rápida ☕',
   'Respire fundo e continue 🙂',
   'Não esqueça de dar commit no projeto!',
-  'Já alongou hoje? 🧘',
+  'Hora de revisar a matéria! 📖',
   'Bora estudar mais um pouco 📚',
 ];
 
