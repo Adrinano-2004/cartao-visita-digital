@@ -42,17 +42,20 @@ function CartaoVisita() {
   const [notificacoes, setNotificacoes] = useState(false);
   const [aviso, setAviso] = useState('');
 
-  // a cada 5 segundos mostra uma mensagem aleatoria, so se o switch estiver ligado
+  // mostra as mensagens uma depois da outra, cada uma por 3 segundos, so se o switch estiver ligado
   useEffect(() => {
     if (!notificacoes) {
       setAviso('');
       return;
     }
 
+    let atual = 0;
+    setAviso(mensagens[atual]); // ja mostra a primeira assim que liga
+
     const intervalo = setInterval(() => {
-      const sorteio = Math.floor(Math.random() * mensagens.length);
-      setAviso(mensagens[sorteio]);
-    }, 5000);
+      atual = (atual + 1) % mensagens.length; // volta pra primeira depois da ultima
+      setAviso(mensagens[atual]);
+    }, 3000);
 
     // quando desligar o switch o intervalo para
     return () => clearInterval(intervalo);
