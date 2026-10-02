@@ -9,6 +9,7 @@ import {
   Pressable,
   Modal,
   Alert,
+  Platform,
   StyleSheet,
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -23,6 +24,15 @@ const mensagens = [
   'Hora de revisar a matéria! 📖',
   'Bora estudar mais um pouco 📚',
 ];
+
+// o Alert.alert nao funciona no navegador, entao na web usa o alert do proprio browser
+function mostrarMensagem(titulo, texto) {
+  if (Platform.OS === 'web') {
+    window.alert(`${titulo}\n\n${texto}`);
+  } else {
+    Alert.alert(titulo, texto);
+  }
+}
 
 function CartaoVisita() {
   const [bio, setBio] = useState('');
@@ -56,7 +66,7 @@ function CartaoVisita() {
   function salvarBio() {
     setBio(textoModal);
     setModalAberto(false);
-    Alert.alert('Sucesso', 'Bio atualizada!');
+    mostrarMensagem('Sucesso', 'Bio atualizada!');
   }
 
   return (
@@ -93,7 +103,7 @@ function CartaoVisita() {
 
         <Pressable
           style={({ pressed }) => [styles.botaoSalvar, pressed && { opacity: 0.7 }]}
-          onPress={() => Alert.alert('Salvo', 'Dados salvos com sucesso!')}
+          onPress={() => mostrarMensagem('Salvo', 'Dados salvos com sucesso!')}
         >
           <Text style={styles.textoBotao}>Salvar</Text>
         </Pressable>
